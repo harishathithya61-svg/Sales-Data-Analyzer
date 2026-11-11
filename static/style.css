@@ -1,0 +1,159 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6fb;
+    color: #26344a;
+}
+
+header {
+    background: linear-gradient(120deg, #163b70, #2879c7);
+    color: white;
+    padding: 35px 8%;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.upload-section,
+.chart-section,
+.table-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+.upload-section h2,
+.chart-section h2,
+.table-section h2 {
+    margin-bottom: 15px;
+}
+
+.upload-section p {
+    margin-bottom: 20px;
+    color: #667085;
+}
+
+input[type="file"] {
+    display: block;
+    margin-bottom: 18px;
+}
+
+button {
+    background: #2879c7;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #163b70;
+}
+
+.upload-section a {
+    display: block;
+    margin-top: 20px;
+    color: #2879c7;
+    text-decoration: none;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin: 20px 0;
+}
+
+.card {
+    background: white;
+    border-left: 5px solid #2879c7;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+.card p {
+    color: #667085;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    color: #163b70;
+    overflow-wrap: anywhere;
+}
+
+.chart-section img {
+    width: 100%;
+    height: auto;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 13px;
+    border-bottom: 1px solid #e5eaf1;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    background: #eaf2fc;
+    color: #163b70;
+}
+
+tr:hover {
+    background: #f5f8fc;
+}
+
+.message {
+    background: #ffe8e8;
+    color: #b42318;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+}
+
+footer {
+    background: #163b70;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+@media(max-width: 850px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 500px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+

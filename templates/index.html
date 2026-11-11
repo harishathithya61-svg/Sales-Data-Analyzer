@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Retail Sales Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>📊 Retail Sales Dashboard</h1>
+    <p>Analyze your retail business performance</p>
+</header>
+
+<main>
+
+<section class="upload-section">
+
+    <h2>Upload Your Sales Data</h2>
+
+    <p>Upload your CSV file to generate your dashboard.</p>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <input type="file"
+               name="file"
+               accept=".csv"
+               required>
+
+        <button type="submit">
+            Generate Dashboard
+        </button>
+
+    </form>
+
+    <a href="{{ url_for('download_sample') }}">
+        Download Sample CSV
+    </a>
+
+</section>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% if dashboard %}
+
+<section class="dashboard">
+
+    <h2>Sales Overview</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <p>Total Revenue</p>
+            <h2>{{ dashboard.total_sales }}</h2>
+        </div>
+
+        <div class="card">
+            <p>Total Orders</p>
+            <h2>{{ dashboard.total_orders }}</h2>
+        </div>
+
+        <div class="card">
+            <p>Quantity Sold</p>
+            <h2>{{ dashboard.total_quantity }}</h2>
+        </div>
+
+        <div class="card">
+            <p>Average Order Value</p>
+            <h2>{{ dashboard.average_order }}</h2>
+        </div>
+
+    </div>
+
+    <div class="chart-section">
+
+        <h2>Sales Analytics</h2>
+
+        <img src="data:image/png;base64,{{ dashboard.chart }}"
+             alt="Sales charts">
+
+    </div>
+
+    <div class="table-section">
+
+        <h2>Sales Records</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        {% for column in dashboard.columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for row in dashboard.table %}
+                        <tr>
+                            {% for column in dashboard.columns %}
+                                <td>{{ row[column] }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+</main>
+
+<footer>
+    <p>Retail Sales Dashboard | Python | Flask | Pandas | Matplotlib</p>
+</footer>
+
+</body>
+</html>
